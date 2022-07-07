@@ -22,11 +22,11 @@ class Weatherer extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Container(
-              color: Colors.red,
-              height: 20,
-              width: double.infinity,
-            ),
+            // Container(
+            //   color: Colors.red,
+            //   height: 20,
+            //   width: double.infinity,
+            // ),
             // our bottom custom container
             Positioned(
               bottom: 0,
