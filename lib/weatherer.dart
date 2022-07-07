@@ -7,6 +7,10 @@ class Weatherer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/rainy_weather.jpg'),
+                fit: BoxFit.cover)),
         child: Column(
           children: [],
         ),
