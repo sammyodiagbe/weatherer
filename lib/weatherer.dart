@@ -22,26 +22,21 @@ class Weatherer extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Container(
-              color: Colors.red,
-              height: 20,
-              width: double.infinity,
-            ),
             // our bottom custom container
             Positioned(
-              bottom: 50,
+              bottom: 0,
               child: ClipPath(
                 clipper: BottomClipper(),
                 child: Container(
                   width: screenWidth,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
-                    ),
+                    // borderRadius: BorderRadius.only(
+                    //   topLeft: Radius.circular(30),
+                    //   topRight: Radius.circular(30),
+                    // ),
                     color: Colors.white,
                   ),
-                  height: 200,
+                  height: 250,
                 ),
               ),
             )
@@ -57,26 +52,13 @@ class BottomClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     debugPrint(size.width.toString());
     var path = Path();
+    var height = size.height;
+    var width = size.width;
 
-    // close the path
-
-    path.lineTo(0, size.height);
-    var firstStart = Offset(size.width / 5, size.height);
-    var firstEnd = Offset(size.width / 2.25, size.height - 50);
-    var secondStart =
-        Offset(size.width - (size.width / 3.24), size.height - 105);
-    var secondEnd = Offset(size.width, size.height - 10);
-
-    // cubic bezier curve
-    path.quadraticBezierTo(
-        firstStart.dx, firstStart.dy, firstEnd.dx, firstEnd.dy);
-    path.quadraticBezierTo(
-        secondStart.dx, secondStart.dy, secondEnd.dx, secondEnd.dy);
-    path.lineTo(size.width, 0);
     path.close();
     return path;
   }
 
   @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => true;
 }
