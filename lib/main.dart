@@ -9,6 +9,11 @@ class WeathererApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        buttonTheme: ButtonThemeData(
+          buttonColor: Colors.purple,
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       home: Weatherer(),
     );
