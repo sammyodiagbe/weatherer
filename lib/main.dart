@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/loaderScreen.dart';
 import 'package:weather_app/weatherer.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class WeathererApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: Weatherer(),
+      home: SpinnerScreen(),
     );
   }
 }
