@@ -3,7 +3,19 @@
 import "package:flutter/material.dart";
 import "package:flutter_spinkit/flutter_spinkit.dart";
 
-class SpinnerScreen extends StatelessWidget {
+class SpinnerScreen extends StatefulWidget {
+  @override
+  State<SpinnerScreen> createState() => _SpinnerScreenState();
+}
+
+class _SpinnerScreenState extends State<SpinnerScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void getWeatherData() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
