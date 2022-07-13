@@ -1,12 +1,20 @@
 // ignore_for_file:  prefer_const_constructors
 
+import 'dart:collection';
+
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:weather_app/constants.dart';
 
 class Weatherer extends StatelessWidget {
+  String description;
+  double temp;
+  String? icon;
+
+  Weatherer({required this.description, required this.temp, this.icon});
   @override
   Widget build(BuildContext context) {
+    // print(int.parse('0x${icon}'));
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -29,85 +37,27 @@ class Weatherer extends StatelessWidget {
                 top: screenHeight * 0.2,
                 child: Container(
                   width: screenWidth,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        '24',
-                        style: weatherStyle,
-                      ),
-                      Text(
-                        'Expect light rain'.toUpperCase(),
-                        style: expectStyle,
-                      ),
-                    ],
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          (temp - 273.15).toStringAsFixed(1),
+                          style: weatherStyle,
+                        ),
+                        SizedBox(height: 10),
+                        // Icon(IconData(int.parse('0x${icon}'))),
+                        Text(
+                          description.toUpperCase(),
+                          style: expectStyle,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
               // our bottom custom container
-              Positioned(
-                bottom: 0,
-                left: 0,
-                child: Container(
-                  // margin: EdgeInsets.symmetric(horizontal: 15),
-
-                  padding: EdgeInsets.all(20),
-                  width: screenWidth,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
-                    ),
-                    color: Colors.white,
-                  ),
-                  height: 200,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Search by location name.',
-                        style: labelTextStyle,
-                      ),
-                      SizedBox(height: 20),
-                      Container(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter search here',
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      // buttonn and current_location
-                      Container(
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    padding: EdgeInsets.all(12)),
-                                onPressed: () {},
-                                child: Text('Search'),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            IconButton(
-                              color: Colors.purple,
-                              onPressed: () {},
-                              icon: Icon(Icons.home),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
             ],
           ),
         ),

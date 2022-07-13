@@ -1,8 +1,11 @@
 // ignore_for_file:  prefer_const_constructors
 
+import 'dart:convert';
+
 import "package:flutter/material.dart";
 import "package:flutter_spinkit/flutter_spinkit.dart";
 import 'package:weather_app/models/weatherBrain.dart';
+import 'package:weather_app/weatherer.dart';
 
 class SpinnerScreen extends StatefulWidget {
   @override
@@ -16,8 +19,18 @@ class _SpinnerScreenState extends State<SpinnerScreen> {
     getWeatherData();
   }
 
-  void getWeatherData() {
-    var res = WeatherBrain.getLocation();
+  void getWeatherData() async {
+    var res = await WeatherBrain.getLocation();
+    var rawData = jsonDecode(res);
+
+    print(rawData['main']);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Weatherer(
+              description: rawData['weather'][0]['description'],
+              temp: rawData['main']['temp']),
+        ));
   }
 
   @override
