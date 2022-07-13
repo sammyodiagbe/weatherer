@@ -2,6 +2,7 @@
 
 import "package:flutter/material.dart";
 import "package:flutter_spinkit/flutter_spinkit.dart";
+import 'package:weather_app/models/weatherBrain.dart';
 
 class SpinnerScreen extends StatefulWidget {
   @override
@@ -12,9 +13,12 @@ class _SpinnerScreenState extends State<SpinnerScreen> {
   @override
   void initState() {
     super.initState();
+    getWeatherData();
   }
 
-  void getWeatherData() {}
+  void getWeatherData() {
+    var res = WeatherBrain.getLocation();
+  }
 
   @override
   Widget build(BuildContext context) {
