@@ -15,7 +15,7 @@ class WeatherBrain {
       var lat = position.latitude;
       var lng = position.longitude;
       http.Response data = await http.get(Uri.parse(
-          'https://api.openweathermap.org/data/2.5/weather?lat={$lat}&lon={$lng}&appid={API key}'));
+          'https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon={$lng}&appid=6b4d6bf1d14e0e6bb054831096faa178'));
 
       print(data.statusCode);
     } catch (error) {
